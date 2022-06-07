@@ -8,16 +8,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Square+Peg&display=swap" rel="stylesheet">
-    <title>ramdon dogs</title>
+    <title>Random dogs</title>
 </head>
 <body>
     <header>
-        <h1>Random dogs</h1>
+       <h1>dogguis APP</h1>
+       <span id="error"></span>
     </header>
-    <section class="container">
-        <img alt="dog random Picture" class="image">
-        <button type="button" class="random-dog-button"> Show me a dog!</button>
+
+    <section id="randomDoguis"class="container">
+        <h2>Random Doguis</h2>
+        
+        <article>
+            <img id ="img1" alt="dog random Picture" class="image">
+            <button id="btn1">Save Dogui in favorites</button>
+        </article>
+        <article>
+            <img id ="img2" alt="dog random Picture" class="image">
+            <button id="btn2">Save Dogui in favorites</button>
+        </article>
+        <button onclick="LoadRandomDoguis()" type="button" class="button"> Show me more dogs!</button>
     </section>
+ 
+    <section id="favoriteDoguis">
+     
+
+</section>
+    
     <script src="./main.js"></script>
 </body>
 </body>
