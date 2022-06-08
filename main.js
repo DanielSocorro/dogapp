@@ -1,5 +1,10 @@
+ const api = axios.create({
+     baseURL: 'https://api.thedogapi.com/v1'
+ });
+ api.defaults.headers.common['X-API-KEY'] = '61a4ede6-a91f-46d7-8645-00103d1fb759';
  const RandomURL = 'https://api.thedogapi.com/v1/images/search?limit=2';
  const FavoriteURL = 'https://api.thedogapi.com/v1/favourites';
+ const UploadURL = 'https://api.thedogapi.com/v1/images/upload';
  const deleteFavoriteURL = (id) => `https://api.thedogapi.com/v1/favourites/${id}?&api_key=61a4ede6-a91f-46d7-8645-00103d1fb759`;
 
 
@@ -37,70 +42,103 @@ async function LoadFavoritesDoguis() {
     const data = await res.json();
     console.log('favorites')
     console.log(data)
+
      if (res.status !== 200) {  
-        spanError.innerHTML = "ther was a error:" + res.status + data.message; 
+        spanError.innerHTML = "ther was a error:" + status + data.message; 
     } else {
-        const section = document.getElementById('favoriteDoguis');
-      
+        const section = document.getElementById('favoriteDoguis')
+        section.innerHTML = "";  ////<---- VERY IMPORTANT TO NOT DUPLICATE THE PAGE
+
         const h2 = document.createElement('h2');
         const h2Text = document.createTextNode('Favorites Doguis');
         h2.appendChild(h2Text);
         section.appendChild(h2);
-        data.forEach(dogui => {
-            
+
+        data.forEach(dogui => {    
             const article = document.createElement('article');
             const img = document.createElement('img');
             const btn = document.createElement('button');
             const btnText = document.createTextNode('put out Dogui from favorites');
             
-            btn.appendChild(btnText);
+            
             img.src = dogui.image.url
             img.width = 150;
+            btn.appendChild(btnText);
             btn.onclick = () => deleteFavoriteDogui(dogui.id)
             article.appendChild(img);
             article.appendChild(btn);
             section.appendChild(article);
-            
         });
     }
     
 }
 async function saveFavoriteDoguis(id) { 
-    const res = await fetch(FavoriteURL, {
+    const { data, status } = await api.post('/favourites', {
+        image_id: id,
+    });
+   /*  const res = await fetch(FavoriteURL, {
     method: 'POST',
      headers: {  
          'Content-Type': 'application/json',
-         'X-API-KEY':'61a4ede6-a91f-46d7-8645-00103d1fb759',
+         'X-API-KEY':'61a4ede6-a91f-46d7-8645-00103d1fb759', // antigua forma de realizar la solitud sin axios
      },
      body: JSON.stringify({
          image_id:id 
      }),
     }); 
-    const data = await res.json();
-    console.log('save');
-    console.log(res);
+    const data = await res.json(); */
 
-    if (res.status !== 200) {  
+    console.log('save');
+
+    if (status !== 200) {  
         spanError.innerHTML = "ther was a error" + res.status + data.message; 
     } else {
         console.log('dogui save in favorites')
-        
+        LoadFavoritesDoguis();
     }
-    
 }
 
 async function deleteFavoriteDogui(id) {
     const res = await fetch(deleteFavoriteURL(id) , {
         method: 'DELETE',
+        headers: {
+            'X-API-KEY':'61a4ede6-a91f-46d7-8645-00103d1fb759',
+        }
         }); 
         const data = await res.json();
+
         if (res.status !== 200) {  
             spanError.innerHTML = "ther was a error" + res.status + data.message; 
         } else {
             console.log('dogui out of favorites')
-            
+            LoadFavoritesDoguis();
         }
 }
 
+async function uploadDoguiPhoto() {
+    const form = document.getElementById('uploadingForm')
+    const formData = new FormData(form);
+
+    console.log(formData.get('file'))
+
+    const res = await fetch(UploadURL, {
+        method: 'POST',
+        headers: {
+          /*   'Content-Type': 'multipart/form-data', */
+            'X-API-KEY':'61a4ede6-a91f-46d7-8645-00103d1fb759',
+        },
+        body: formData,
+     })
+     const data = await res.json();
+
+     if (res.status !== 200) {  
+        spanError.innerHTML = "ther was a error" + res.status + data.message; 
+    } else {
+        console.log('foto de dogui subida')
+        console.log({data});
+        console.log(data.url);
+        saveFavoriteDoguis(data.id)
+    }
+}
 LoadRandomDoguis();
 LoadFavoritesDoguis();

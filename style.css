@@ -40,6 +40,7 @@ h2 {
     align-items: center;
     background-color: rgb(103, 94, 228);
     border: 5px solid rgb(117, 111, 210);
+    color: beige;
     border-radius: 15px;
     cursor: pointer;
     font-family: monospace;
