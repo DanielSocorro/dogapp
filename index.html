@@ -12,41 +12,86 @@
 </head>
 <body>
     <header>
-       <h1>dogguis APP</h1>
-       <span id="error"></span>
+        <div class="header-title">
+            <h1>DOGS APP</h1>
+            <h4>dogs randomly generated through an api connection</h4>
+        </div>
+       
     </header>
-
+    <div class="header-title">
+        <h2>Random Doggys</h2>
+    </div>
     <section id="randomDoguis"class="container">
-        <h2>Random Doguis</h2>
+  <div class="arrow-right">ᐳ</div>
         
         <article>
             <img id ="img1" alt="dog random Picture" class="image">
-            <button id="btn1">Save Dogui in favorites</button>
+            <button class="save-button" id="btn1"><img src="/img/heart-icon.svg" alt=""></button>
         </article>
         <article>
             <img id ="img2" alt="dog random Picture" class="image">
-            <button id="btn2">Save Dogui in favorites</button>
+            <button class="save-button" id="btn2"><img src="/img/heart-icon.svg" alt=""></button>
         </article>
-        <button onclick="LoadRandomDoguis()" type="button" class="button"> Show me more dogs!</button>
-    </section>
- 
-    <section id="uploadingDogui">
-        <h2>upload your Dogui pic</h2>
-    
-        <form id="uploadingForm">
-        <input type="file" name="file" id="file">
-        <button type="button" onclick="uploadDoguiPhoto()">upload your pic</button>
-        </form>
-        
-    </section>
-    
-    <section id="favoriteDoguis">
-     <h2>favorite Doguis</h2>
-     <article>
-         <img id="img1" width="150" alt="random dogui pic">
-        <button> put out dogui from favorites</button>
+         
+        <article>
+            <img id ="img3" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn3"><img src="/img/heart-icon.svg" alt=""></button>
         </article>
+         
+        <article>
+            <img id ="img4" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn4"><img src="/img/heart-icon.svg" alt=""></button>
+        </article>
+         
+        <article>
+            <img id ="img5" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn5"><img src="/img/heart-icon.svg" alt=""></button>
+        </article>
+         
+        <article>
+            <img id ="img6" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn6"><img src="/img/heart-icon.svg" alt=""></button>
+        </article>
+         
+        <article>
+            <img id ="img7" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn7"><img src="/img/heart-icon.svg" alt=""></button>
+        </article>
+         
+        <article>
+            <img id ="img8" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn8"><img src="/img/heart-icon.svg" alt=""></button>
+        </article>
+         
+        <article>
+            <img id ="img9" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn9"><img src="/img/heart-icon.svg" alt=""></button>
+        </article>
+         
+        <article>
+            <img id ="img10" alt="dog random Picture" class="image">
+            <button class="save-button" id="btn10"><img src="/img/heart-icon.svg" alt=""></button>
+        </article>
+    </section>
+    <button onclick="LoadRandomDoggys()" type="button" class="button"> Show me more dogs!</button> 
+
+   
+    <section id="favoriteDoggys">
+
+   </section>
+
+
+
+   <section id="uploadingDoggy">
+    <h2>upload your Dogui pic</h2>
+
+    <form id="uploadingForm">
+    <input type="file" name="file" id="file">
+    <button type="button" onclick="uploadDoggyPhoto()">upload your pic</button>
+    </form>
+    
 </section>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
 </body>
