@@ -80,8 +80,9 @@ span {
     padding: 12px;
     width: auto;
     height: auto;
-    margin-left: 380px;
+    margin-left: 78%;
     margin-bottom: 50px;
+    margin-top: 12px;
 }
 .button:hover {
     border: 5px solid rgb(150, 116, 4);
@@ -102,9 +103,9 @@ span {
     margin-left: -29px;
 }
 .arrow-right {
-    position: absolute;
+
     background-repeat: no-repeat;
-    margin-left: 52rem;
+    margin-left: 67%;
     margin-top: 90px;
     font-size: 37px;
     color: rgb(252, 193, 1);
