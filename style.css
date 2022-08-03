@@ -103,9 +103,9 @@ span {
     margin-left: -29px;
 }
 .arrow-right {
-
+    position: absolute;
     background-repeat: no-repeat;
-    margin-left: 67%;
+    margin-left: 88%;
     margin-top: 90px;
     font-size: 37px;
     color: rgb(252, 193, 1);
